@@ -114,11 +114,9 @@ const Dashboard = () => {
             <div key={index} className='bg-slate-200 rounded-md h-[150px] animate-pulse'></div>
           ))
         )}
-        {
-          getfiles.length===0 && (
-            <div className='text-center'>No pdf Uploaded</div>
-          )
-        }
+        {getfiles?.length === 0 && (
+  <div className='text-center col-span-full'>No PDF Uploaded</div>
+)}
       </div>
       </div>
       </div>
