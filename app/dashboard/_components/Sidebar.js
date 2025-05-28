@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 // import path from "path";
 
-const Sidebar = () => {
+const Sidebar = ({open}) => {
   const { user } = useUser();
   
   const getuserInfo=useQuery(api.user.GetUserInfo,{

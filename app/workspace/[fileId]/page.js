@@ -17,19 +17,32 @@ function page() {
       console.log(fileInfo);
     },[fileInfo])
   return (
+    // <div>
+    //   <WorkspaceHeader fileName={fileInfo?.fileName} />
+
+    //   <div className='grid grid-cols-2 gap-5 p-5'>
+
+    //     <div>
+    //         <TextEditor fileId={fileId} />
+    //     </div>
+    //     <div className='w-full h-full'>
+    //       <PdfViewer fileUrl={fileInfo?.fileUrl}/>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className='bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500'>
+  <WorkspaceHeader fileName={fileInfo?.fileName} />
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
     <div>
-      <WorkspaceHeader fileName={fileInfo?.fileName} />
-
-      <div className='grid grid-cols-2 gap-5 p-5'>
-
-        <div>
-            <TextEditor fileId={fileId} />
-        </div>
-        <div className='w-full h-full'>
-          <PdfViewer fileUrl={fileInfo?.fileUrl}/>
-        </div>
-      </div>
+      <TextEditor fileId={fileId} />
     </div>
+    <div className="w-full h-full">
+      <PdfViewer fileUrl={fileInfo?.fileUrl} />
+    </div>
+  </div>
+</div>
+
   )
 }
 

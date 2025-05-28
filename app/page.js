@@ -46,7 +46,7 @@ export default function Home() {
       <div className="absolute  inset-0 bg-gradient-to-tl from-blue-500/30 via-violet-500/30 to-emerald-500/30 animate-gradient"></div>
       <FloatingBackground />
       <div className="relative z-10">
-        <Navbar />
+       
         <Hero />
       </div>
     </main>

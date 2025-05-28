@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "../components/ui/button"
 import { UserButton } from "@clerk/nextjs"
@@ -5,12 +7,12 @@ import { useUser } from "@clerk/nextjs"
 export default function Navbar() {
     const user=useUser();
   return (
-    <nav className="border-b border-white/20 bg-white/10 dark:bg-black/10 backdrop-blur-md">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 shadow-lg border-b  border-white/10 bg-violet-500 dark:bg-black/10 backdrop-blur-md">
+      <div className="container mx-auto px-0 py-3 flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="font-bold text-xl flex items-center text-white">
-            <span className="text-black mr-2">Notes</span>
-            <span>AI</span>
+            <span className="text-black mr-2">Notes </span>
+            <span className="text-">AI</span>
           </Link>
         </div>
 

@@ -8,6 +8,7 @@ import {chatSession} from '../../../configs/AIModel'
 // import { text } from 'stream/consumers';
 import { toast } from "sonner"
 import { useUser } from '@clerk/nextjs';
+import { Button } from '../../../components/ui/button';
 
 function EditorExtensions({ editor }) {
     
@@ -36,7 +37,7 @@ function EditorExtensions({ editor }) {
     Unformattedans&&Unformattedans.forEach(item => {
         allUnformattedans=allUnformattedans+item.pageContent
     });
-    console.log(allUnformattedans)
+    console.log("allunformattedans",allUnformattedans)
 
     const Prompt="For question : "+selectedText+" with the given content as answer. Please give the appropriate answer in html format"+allUnformattedans;
     const Aimodel = await chatSession.sendMessage(Prompt);
@@ -56,12 +57,23 @@ function EditorExtensions({ editor }) {
     })
     
     }
+    const handleSave=async ()=>{
+        if(!editor) return;
+          saveNotes({
+        fileId:fileId,
+        notes:editor.getHTML(),
+        createdBy:user?.primaryEmailAddress?.emailAddress
+        
+    })
+    console.log("notes saved successfully")
+    }
 
     
     return (
         <div>
             <div className="control-group">
-                <div className="button-group flex gap-2">
+              
+                <div className="button-group flex gap-4 ">
                     {editor && (
                         <button
                             onClick={() => editor.chain().focus().toggleBold().run()}
@@ -70,23 +82,17 @@ function EditorExtensions({ editor }) {
                             Toggle bold
                         </button>
                     )}
-                    {editor && (
-                        <button
-                            onClick={() => editor.chain().focus().toggleBold().run()}
-                            className={`px-4 py-2 rounded-2xl cursor-pointer bg-black text-white  ${editor.isActive('italic') ? 'text-blue-500' : ''}`}
-                        >
-                            Toggle bold
-                        </button>
-                    )}
+                  
 
                     {editor && (
                         <button
                             onClick={() => onAiClick()}
-                            className={'cursor-pointer hover:text-blue-500'}
+                            className={'cursor-pointer hover:text-blue-500 px-4 py-2 rounded-2xl bg-black text-white'}
                         >
-                            <Sparkles/>
+                            <Sparkles/>Ask Ai
                         </button>
                     )}
+                      <Button className="right-0 mb-2 px-4 cursor-pointer py-2" onClick={handleSave}>Save Notes</Button>
                 </div>
             </div>
         </div>
